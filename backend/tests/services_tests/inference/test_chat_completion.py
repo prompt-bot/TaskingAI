@@ -63,9 +63,11 @@ class TestChatCompletion:
             CONFIG.chat_completion_model_id,
             CONFIG.togetherai_chat_completion_model_id,
             CONFIG.custom_host_chat_completion_model_id,
+            CONFIG.fallbacks_chat_completion_model_id,
+            CONFIG.fallbacks_debug_error_model_id
         ]
 
-        for model_id in chat_completion_model_id_list:
+        for index, model_id in enumerate(chat_completion_model_id_list):
             chat_completion_data = {
                 "model_id": model_id,
                 "messages": [{"role": "user", "content": "Hello, nice to meet you, what is your name"}],
@@ -82,7 +84,7 @@ class TestChatCompletion:
             res = await chat_completion(chat_completion_data)
             res_json = res.json()
 
-            assert res.status_code == 200, res.json()
+            assert res.status_code == 200, f"{index} {res.json()}"
             assert res_json.get("status") == "success"
             assert res_json.get("data").get("finish_reason") == "stop"
             assert res_json.get("data").get("message").get("role") == "assistant"
@@ -101,9 +103,10 @@ class TestChatCompletion:
             CONFIG.chat_completion_model_id,
             CONFIG.togetherai_chat_completion_model_id,
             CONFIG.custom_host_chat_completion_model_id,
+            CONFIG.fallbacks_chat_completion_model_id,
         ]
 
-        for model_id in chat_completion_model_id_list:
+        for index, model_id in enumerate(chat_completion_model_id_list):
             chat_completion_data = {
                 "model_id": model_id,
                 "messages": [{"role": "user", "content": "what is 18794658 + 9731686"}],
@@ -135,7 +138,7 @@ class TestChatCompletion:
             res = await chat_completion(chat_completion_data)
             res_json = res.json()
 
-            assert res.status_code == 200, res.json()
+            assert res.status_code == 200, f"{index} {res.json()}"
             assert res_json.get("status") == "success"
             assert res_json.get("data").get("finish_reason") == "function_calls"
             assert res_json.get("data").get("message").get("role") == "assistant"
@@ -152,8 +155,10 @@ class TestChatCompletion:
             CONFIG.chat_completion_model_id,
             CONFIG.togetherai_chat_completion_model_id,
             CONFIG.custom_host_chat_completion_model_id,
+            CONFIG.fallbacks_chat_completion_model_id,
+            CONFIG.fallbacks_debug_error_model_id
         ]
-        for model_id in chat_completion_model_id_list:
+        for index, model_id in enumerate(chat_completion_model_id_list):
             chat_completion_data = {
                 "model_id": model_id,
                 "messages": [
@@ -177,7 +182,7 @@ class TestChatCompletion:
 
             res = await chat_completion(chat_completion_data)
             res_json = res.json()
-            assert res.status_code == 200, res.json()
+            assert res.status_code == 200, f"{index} {res.json()}"
             assert res_json.get("status") == "success"
             assert res_json.get("data").get("finish_reason") == "stop"
             assert res_json.get("data").get("message").get("role") == "assistant"
@@ -192,9 +197,11 @@ class TestChatCompletion:
             CONFIG.chat_completion_model_id,
             CONFIG.togetherai_chat_completion_model_id,
             CONFIG.custom_host_chat_completion_model_id,
+            CONFIG.fallbacks_chat_completion_model_id,
+            CONFIG.fallbacks_debug_error_model_id
         ]
 
-        for model_id in chat_completion_model_id_list:
+        for index, model_id in enumerate(chat_completion_model_id_list):
             chat_completion_data = {
                 "model_id": model_id,
                 "messages": [{"role": "user", "content": "Hello, nice to meet you, what is your name"}],
@@ -205,7 +212,7 @@ class TestChatCompletion:
             res = await chat_completion(chat_completion_data)
             res_json = res.json()
 
-            assert res.status_code == 200, res.json()
+            assert res.status_code == 200, f"{index} {res.json()}"
             assert res_json.get("status") == "success"
             assert res_json.get("data").get("finish_reason") == "length"
             assert res_json.get("data").get("message").get("role") == "assistant"
@@ -222,9 +229,11 @@ class TestChatCompletion:
             CONFIG.chat_completion_model_id,
             CONFIG.togetherai_chat_completion_model_id,
             CONFIG.custom_host_chat_completion_model_id,
+            CONFIG.fallbacks_chat_completion_model_id,
+            CONFIG.fallbacks_debug_error_model_id
         ]
 
-        for model_id in chat_completion_model_id_list:
+        for index, model_id in enumerate(chat_completion_model_id_list):
             chat_completion_data = {
                 "model_id": model_id,
                 "messages": [{"role": "user", "content": "Hello, nice to meet you, what is your name"}],
@@ -248,7 +257,7 @@ class TestChatCompletion:
                 else:
                     assert False, response_dict
 
-            assert default, "stream failed"
+            assert default, f"{index} stream failed"
 
 
     @pytest.mark.run(order=126)
@@ -263,8 +272,9 @@ class TestChatCompletion:
             CONFIG.chat_completion_model_id,
             CONFIG.togetherai_chat_completion_model_id,
             CONFIG.custom_host_chat_completion_model_id,
+            CONFIG.fallbacks_chat_completion_model_id,
         ]
-        for model_id in chat_completion_model_id_list:
+        for index, model_id in enumerate(chat_completion_model_id_list):
             chat_completion_data = {
                 "model_id": model_id,
                 "messages": [{"role": "user", "content": "what is 18794658 + 9731686"}],
@@ -296,7 +306,7 @@ class TestChatCompletion:
                 assert response_dict.get("message").get("content") is None
                 assert response_dict.get("message").get("function_calls") is not None
                 default = True
-            assert default is True
+            assert default, f"{index} stream failed"
 
     @pytest.mark.run(order=127)
     @pytest.mark.asyncio
@@ -305,9 +315,11 @@ class TestChatCompletion:
             CONFIG.chat_completion_model_id,
             CONFIG.togetherai_chat_completion_model_id,
             CONFIG.custom_host_chat_completion_model_id,
+            CONFIG.fallbacks_chat_completion_model_id,
+            CONFIG.fallbacks_debug_error_model_id
         ]
 
-        for model_id in chat_completion_model_id_list:
+        for index, model_id in enumerate(chat_completion_model_id_list):
             chat_completion_data = {
                 "model_id": model_id,
                 "messages": [{"role": "user", "content": "Hello, nice to meet you, what is your name"}],
@@ -332,18 +344,18 @@ class TestChatCompletion:
                     assert response_dict.get("delta") is not None
                 else:
                     assert False, response_dict
-            assert default, "stream failed"
+            assert default, f"{index} stream failed"
 
     @pytest.mark.run(order=128)
     @pytest.mark.asyncio
     async def test_chat_completion_by_function_call_and_length(self):
         chat_completion_model_id_list = [
             CONFIG.chat_completion_model_id,
-
             CONFIG.custom_host_chat_completion_model_id,
+            CONFIG.fallbacks_chat_completion_model_id,
         ]
 
-        for model_id in chat_completion_model_id_list:
+        for index, model_id in enumerate(chat_completion_model_id_list):
             chat_completion_data = {
                 "model_id": model_id,
                 "messages": [{"role": "user", "content": "what is 18794658 + 9731686"}],
@@ -377,11 +389,11 @@ class TestChatCompletion:
     async def test_chat_completion_by_stream_and_function_call_and_length(self):
         chat_completion_model_id_list = [
             CONFIG.chat_completion_model_id,
-
             CONFIG.custom_host_chat_completion_model_id,
+            CONFIG.fallbacks_chat_completion_model_id,
         ]
 
-        for model_id in chat_completion_model_id_list:
+        for index, model_id in enumerate(chat_completion_model_id_list):
             chat_completion_data = {
                 "model_id": model_id,
                 "messages": [{"role": "user", "content": "what is 18794658 + 9731686"}],
@@ -426,7 +438,7 @@ class TestChatCompletion:
         res = await chat_completion(chat_completion_data)
         res_json = res.json()
 
-        pytest.assume(res.status_code == 400, res.json())
+        pytest.assume(res.status_code == 422, res.json())
         pytest.assume(res_json.get("error").get("code") == "REQUEST_VALIDATION_ERROR")
 
     @pytest.mark.run(order=130)
@@ -466,6 +478,5 @@ class TestChatCompletion:
         }
         res = await chat_completion(chat_completion_data)
         res_json = res.json()
-
         pytest.assume(res.status_code == 422, res.json())
-        pytest.assume(res_json.get("error").get("code") == "REQUEST_VALIDATION_ERROR")
+        pytest.assume(res_json.get("error").get("code") == "REQUEST_VALIDATION_ERROR", res_json)
