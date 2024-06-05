@@ -60,11 +60,11 @@ class TestChatCompletion:
     async def test_chat_completion_by_normal(self):
 
         chat_completion_model_id_list = [
+            CONFIG.fallbacks_debug_error_model_id,
             CONFIG.chat_completion_model_id,
             CONFIG.togetherai_chat_completion_model_id,
             CONFIG.custom_host_chat_completion_model_id,
             CONFIG.fallbacks_chat_completion_model_id,
-            CONFIG.fallbacks_debug_error_model_id
         ]
 
         for index, model_id in enumerate(chat_completion_model_id_list):
@@ -152,11 +152,11 @@ class TestChatCompletion:
     async def test_chat_completion_by_normal_function_call_result(self):
 
         chat_completion_model_id_list = [
+            CONFIG.fallbacks_debug_error_model_id,
             CONFIG.chat_completion_model_id,
             CONFIG.togetherai_chat_completion_model_id,
             CONFIG.custom_host_chat_completion_model_id,
             CONFIG.fallbacks_chat_completion_model_id,
-            CONFIG.fallbacks_debug_error_model_id
         ]
         for index, model_id in enumerate(chat_completion_model_id_list):
             chat_completion_data = {
@@ -194,11 +194,11 @@ class TestChatCompletion:
     @pytest.mark.asyncio
     async def test_chat_completion_by_normal_length(self):
         chat_completion_model_id_list = [
+            CONFIG.fallbacks_debug_error_model_id,
             CONFIG.chat_completion_model_id,
             CONFIG.togetherai_chat_completion_model_id,
             CONFIG.custom_host_chat_completion_model_id,
             CONFIG.fallbacks_chat_completion_model_id,
-            CONFIG.fallbacks_debug_error_model_id
         ]
 
         for index, model_id in enumerate(chat_completion_model_id_list):
@@ -226,11 +226,11 @@ class TestChatCompletion:
     async def test_chat_completion_by_stream(self):
 
         chat_completion_model_id_list = [
+            CONFIG.fallbacks_debug_error_model_id,
             CONFIG.chat_completion_model_id,
             CONFIG.togetherai_chat_completion_model_id,
             CONFIG.custom_host_chat_completion_model_id,
             CONFIG.fallbacks_chat_completion_model_id,
-            CONFIG.fallbacks_debug_error_model_id
         ]
 
         for index, model_id in enumerate(chat_completion_model_id_list):
@@ -312,11 +312,11 @@ class TestChatCompletion:
     @pytest.mark.asyncio
     async def test_chat_completion_by_stream_and_length(self):
         chat_completion_model_id_list = [
+            CONFIG.fallbacks_debug_error_model_id,
             CONFIG.chat_completion_model_id,
             CONFIG.togetherai_chat_completion_model_id,
             CONFIG.custom_host_chat_completion_model_id,
             CONFIG.fallbacks_chat_completion_model_id,
-            CONFIG.fallbacks_debug_error_model_id
         ]
 
         for index, model_id in enumerate(chat_completion_model_id_list):
